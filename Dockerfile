@@ -1,5 +1,5 @@
 # Use 32-bit debian
-ARG BASE_IMAGE=i386/debian:bookworm
+ARG BASE_IMAGE=i386/debian:bookworm-slim
 FROM $BASE_IMAGE
 
 # Install curl & xxd
@@ -29,6 +29,9 @@ RUN echo rcon_password `xxd -l16 -ps /dev/urandom` >> $SAMP_SERVER_DIR/server.cf
 
 # Expose default port
 EXPOSE 7777/udp
+
+# docker logs
+RUN ln -sf /dev/stdout ${SAMP_SERVER_DIR}/server_log.txt
 
 # Set entrypoint
 ENTRYPOINT /srv/samp${SAMP_VERSION}/samp03svr
