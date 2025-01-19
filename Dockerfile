@@ -19,6 +19,11 @@ ARG SOURCE_URL=https://github.com/Se8870/SAMP-File-Archive/blob/master/archives/
 # Download tar,gz
 RUN wget -O /tmp/${TAR_GZ_ARCHIVE} $SOURCE_URL${TAR_GZ_ARCHIVE}?raw=true
 
+# Labels
+LABEL org.opencontainers.image.source "https://github.com/crazzymad777/samp-server-docker"
+LABEL org.opencontainers.image.description "Source archive: $SOURCE_URL${TAR_GZ_ARCHIVE}"
+LABEL org.opencontainers.image.licenses "https://github.com/crazzymad777/samp-server-docker/blob/master/license/SAMP_LICENSE.txt"
+
 # Envs
 ENV SAMP_SERVER_DIR /srv/samp${SAMP_VERSION}
 ENV SAMP_VERSION $SAMP_VERSION
