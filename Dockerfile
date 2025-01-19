@@ -14,8 +14,10 @@ ARG TAR_GZ_ARCHIVE=samp${SAMP_VERSION}.tar.gz
 # Set working directory
 WORKDIR /srv/samp${SAMP_VERSION}
 
+ARG SOURCE_URL=https://github.com/Se8870/SAMP-File-Archive/blob/master/archives/
+
 # Download tar,gz
-RUN wget -O /tmp/${TAR_GZ_ARCHIVE} https://github.com/Se8870/SAMP-File-Archive/blob/master/archives/${TAR_GZ_ARCHIVE}?raw=true
+RUN wget -O /tmp/${TAR_GZ_ARCHIVE} $SOURCE_URL${TAR_GZ_ARCHIVE}?raw=true
 
 # Envs
 ENV SAMP_SERVER_DIR /srv/samp${SAMP_VERSION}
@@ -34,5 +36,4 @@ EXPOSE 7777/udp
 RUN ln -sf /dev/stdout ${SAMP_SERVER_DIR}/server_log.txt
 
 # Set entrypoint
-ENTRYPOINT /srv/samp${SAMP_VERSION}/samp03svr
-
+ENTRYPOINT ${SAMP_SERVER_DIR}/samp03svr
