@@ -1,16 +1,15 @@
 ## Info
 
-Simple Dockerfile for SA:MP server software.
+Simple Dockerfile for SA:MP server software. This docker image can be used for running vanilla SA:MP server or can be base image for your server.
 
+Inspired by https://github.com/krustowski/samp-server-docker
 
-## Build image
+## How to use
 
+Very simple approach to run vanilla server:
 ```
-docker build . -t samp-server:0.3.7-R3
+SAMP_VERSION=0.3.7-R3
+HOST_PORT=7777
+docker container run -p$HOST_PORT:7777/udp ghcr.io/crazzymad777/samp-server:$SAMP_VERSION
 ```
 
-## Run container
-
-```
-docker run -d -p 7777:7777/udp --name samp037 samp-server:0.3.7-R3
-```
