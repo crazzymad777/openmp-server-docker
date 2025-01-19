@@ -23,6 +23,7 @@ ENV SAMP_VERSION $SAMP_VERSION
 
 # Unpack it
 RUN tar -xvf /tmp/${TAR_GZ_ARCHIVE} --strip-components=1 -C $SAMP_SERVER_DIR
+# Prepare server.cfg for running
 RUN sed -i -e 's/rcon_password/#rcon_password/g' $SAMP_SERVER_DIR/server.cfg
 RUN echo rcon_password `xxd -l16 -ps /dev/urandom` >> $SAMP_SERVER_DIR/server.cfg
 
