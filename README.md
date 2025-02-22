@@ -35,7 +35,7 @@ docker build . -t mysuperserver
 
 Create container and run:
 ```
-ID=`docker container create mysuperserver -p7777:7777/udp`
+ID=`docker container create -p7777:7777/udp mysuperserver` 
 docker container start $ID 
 ```
 
