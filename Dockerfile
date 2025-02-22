@@ -2,14 +2,14 @@
 ARG BASE_IMAGE=i386/debian:bookworm-slim
 FROM $BASE_IMAGE
 
-# Install curl
+# Install wget
 RUN apt-get update && apt-get install -y wget
 
 # Custom version
 ARG OPENMP_VERSION=v1.4.0.2779
 
 # Just archive name
-ARG TAR_GZ_ARCHIVE=open.mp-linux-x86.tar.gz
+ARG TAR_GZ_ARCHIVE=open.mp-linux-x86-dynssl.tar.gz
 
 # Set working directory
 WORKDIR /srv/openmp
