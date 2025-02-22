@@ -1,5 +1,5 @@
 # Use 32-bit debian
-ARG BASE_IMAGE=i386/debian:bookworm-slim
+ARG BASE_IMAGE=i386/debian:bullseye-slim
 FROM $BASE_IMAGE
 
 # Install wget
