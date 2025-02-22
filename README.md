@@ -1,6 +1,6 @@
 ## Info
 
-Simple Dockerfile for SA:MP server software. This docker image can be used for running vanilla SA:MP server or can be base image for your server.
+Simple Dockerfile for OpenMP server software. This docker image can be used for running vanilla server or can be base image for your server.
 
 Inspired by https://github.com/krustowski/samp-server-docker
 
@@ -8,24 +8,24 @@ Inspired by https://github.com/krustowski/samp-server-docker
 
 Very simple approach to run vanilla server:
 ```
-SAMP_VERSION=0.3.7-R3 ;
+OPENMP_VERSION=v1.4.0.2779 ;
 HOST_PORT=7777 ; 
-docker container run -p$HOST_PORT:7777/udp ghcr.io/crazzymad777/samp-server:$SAMP_VERSION
+docker container run -p$HOST_PORT:7777/udp ghcr.io/crazzymad777/openmp-server:$OPENMP_VERSION
 ```
 
 Example of child Dockerfile:
 ```
 # Use base image
-FROM ghcr.io/crazzymad777/samp-server:0.3.7-R3
+FROM ghcr.io/crazzymad777/openmp-server:v1.4.0.2779
 
 # Clear gamemodes directory
-RUN bash -c "rm $SAMP_SERVER_DIR/gamemodes/*"
+RUN bash -c "rm $OPENMP_SERVER_DIR/gamemodes/*"
 # Clear filterscripts
-RUN bash -c "rm $SAMP_SERVER_DIR/filterscripts/*"
+RUN bash -c "rm $OPENMP_SERVER_DIR/filterscripts/*"
 # Copy own gamemode
 COPY mysupergamemode.amx ./gamemodes/
 # Copy own configuration
-COPY mysuperconfig.cfg ./server.cfg.lock
+COPY mysuperconfig.json ./config.json
 ```
 
 Building docker image with:
